@@ -1,0 +1,31 @@
+<alert *ngIf="errorMessage" [type]="alertType" (onClosed)="onClosed()" [dismissible]="true">{{ errorMessage }}</alert>
+
+<div class="container create-job-container">
+    <h1 class="title">Generate API Specification by GPT</h1>
+
+    <form class="create-job-form">
+        <div class="form-group full-width-input">
+            <label for="githubRepo">GitHub Repo: </label>
+            <input name="githubRepo" [(ngModel)]="githubRepo" class="form-control" type="text"
+                placeholder="GitHub Repo">
+        </div>
+
+        <div class="form-group short-input">
+            <label for="branch">Branch: </label>
+            <input name="branch" [(ngModel)]="branch" class="form-control" type="text" placeholder="Branch">
+        </div>
+
+        <div class="button-container text-center form-item">
+            <button class="btn btn-primary" (click)="onGenerateButtonClick()">Generate</button>
+        </div>
+
+        <div class="reminder">
+            <p>1. It should be a Java Maven project.</p>
+            <p>2. The GitHub repos should be publicly readable.</p>
+            <p>3. If you want the changes to be pushed directly to the GitHub repo, grant write access to our system
+                GitHub account.</p>
+            <p>4. You are owner of the Specification, you should have final review before merging the code to main
+                branch.</p>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="jobs-list-container">
+    <h1 class="title">Jobs List</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>GitHub Repo</th>
+                <th>Branch</th>
+                <th>User Name</th>
+                <th>Status</th>
+                <th>Start Time</th>
+                <th>Cost</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let job of jobsPage.content">
+                <td>{{ job.id }}</td>
+                <td><a [href]="job.githubRepo" target="_blank">{{ job.githubRepo }}</a></td>
+                <td>{{ job.branch }}</td>
+                <td>{{ job.user.displayName }}</td>
+                <td>{{ job.status }}</td>
+                <td>{{ job.startTime ? job.startTime : 'N/A' }}</td>
+                <td>${{ job.cost }}</td>
+                <td>
+                    <a [routerLink]="['/job-detail', job.id]">View Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination [totalItems]="jobsPage.totalElements" [(ngModel)]="page" (pageChanged)="loadJobs($event)"
+        [itemsPerPage]="jobsPage.size" [maxSize]="5" [boundaryLinks]="true"></pagination>
+</div>

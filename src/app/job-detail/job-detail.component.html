@@ -1,0 +1,23 @@
+<div *ngIf="job" class="job-detail">
+    <h2>Job Detail</h2>
+    <h3>GitHub Details</h3>
+    <p><strong>Repository:</strong> <a [href]="job.githubRepo" target="_blank">{{ job.githubRepo }}</a></p>
+    <p><strong>Branch:</strong> {{ job.branch }}</p>
+
+    <h3>User Information</h3>
+    <p><strong>Name:</strong> {{ job.user.displayName }}</p>
+    <p><strong>Employee ID:</strong> {{ job.user.employeeId }}</p>
+    <p><strong>Email:</strong> {{ job.user.email }}</p>
+    <p><strong>Budget:</strong> {{ job.user.budget }}</p>
+
+    <h3>Job Information</h3>
+    <p><strong>Status:</strong> {{ job.status }}</p>
+    <p><strong>Start Time:</strong> {{ job.startTime ? (job.startTime | date: 'dd-MM-yyyy, h:mm a') : 'N/A' }}</p>
+    <p><strong>End Time:</strong> {{ job.endTime ? (job.endTime | date: 'dd-MM-yyyy, h:mm a') : 'N/A' }}</p>
+    <p><strong>Duration:</strong> {{ job.duration }} seconds</p>
+    <p><strong>Cost:</strong> ${{ job.cost | number: '1.2-2' }}</p>
+    <p><strong>Remark:</strong> {{ job.remark }}</p>
+
+    <p><a href="path_to_download_job_log/{{job.id}}" download>Download Job Log</a></p>
+    <p><a href="path_to_download_job_workspace/{{job.id}}" download>Download Job Workspace</a></p>
+</div>
